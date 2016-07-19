@@ -1,22 +1,25 @@
 # Alpha JPEG - Images with transparency using JPEG compression.
 
-Alpha JPEG is currently made up of two parts. The first part is a Photoshop Action that converts a PNG into an "Alpha JPEG". This is a JPEG that contains both the visible pixels and transparent pixels. The second part is the Alpha JPEG loader. This loads the Alpha JPEG and converts it into a transparent image in the DOM.
+Alpha JPEG is currently made up of two parts. 
+
+1. Photoshop Action that converts a PNG into an "Alpha JPEG". This is a JPEG that contains both the visible pixels and transparent pixels. 
+2. A javascript library for loading the Alpha JPEG image. The javascript contains a loader that loads the Alpha JPEG and converts it into a transparent image in the DOM.
 
 # Usage
 
-Alpha JPEG requires JPEGs that are exported using the Alpha JPEG Photoshop Action. 
+The Alpha JPEG loader requires JPEGs that are exported using the Alpha JPEG Photoshop Action. Read the [Creating Alpha JPEGs](#Creating Alpha JPEGs) section for instructions.
 
-Once you've got an image export it, you'd load it like this:
+Once you've got an image exported, load it like this:
 
-    AlphaJPEG.load('#birdContainer', 'images/bird.alpha.jpg', {onComplete:});
+    AlphaJPEG.load('#birdContainer', 'images/bird.alpha.jpg');
 
-This repository includes both a standalone javascript library you can load directly located here:
+If you preffer to load the javascript libraries directly using script tags or other methods, you can use this stand-alone version of the library:
 
 	/build/alpha-jpeg.min.js
 
-It also includes a commonjs compatible version of the code located here:
+This repository also includes a commonjs module version of the code located here:
 
-	/
+	/src/utils/AlphaJPEG.js
 
 # Methods
 

@@ -10,6 +10,14 @@ Once you've got an image export it, you'd load it like this:
 
     AlphaJPEG.load('#birdContainer', 'images/bird.alpha.jpg', {onComplete:});
 
+This repository includes both a standalone javascript library you can load directly located here:
+
+	/build/alpha-jpeg.min.js
+
+It also includes a commonjs compatible version of the code located here:
+
+	/
+
 # Methods
 
 **AlphaJPEG.load** ( target, imageURL, [options] )
@@ -45,3 +53,17 @@ Alpha JPEG methods accept an optional options object. The options are:
 6. Click the "play" button at the bottom of the Actions panel.
 
 7. You'll see the visible pixels on the left, and the alpha channel pixels on the right. Make any adjustments you need and save your asset out as a JPEG.
+
+# Building
+
+To build a stand alone javascript file you can load directly, run:
+
+	gulp
+
+This compiles a minified version of the library (alpha-jpeg.min.js), and a fullsized version of the library with a sourcemap (alpha-jpeg.js, alpha-jpeg.js.map) located in:
+
+	/build/
+
+To test the commonjs usage example, you can run:
+
+	gulp example

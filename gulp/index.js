@@ -67,4 +67,4 @@ gulp.task('build-prod', gulp.series( 'prod', 'scripts-build' ));
 gulp.task('watch-dev', gulp.series(  'dev', 'example', 'watch' ));
 gulp.task('watch-prod', gulp.series( 'prod', 'example', 'watch' ));
 gulp.task('example', gulp.series( 'watch-dev' ));
-gulp.task('default', gulp.series( 'build-prod' ));
+gulp.task('default', gulp.series( 'build' ));

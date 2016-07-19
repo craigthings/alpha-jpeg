@@ -1,0 +1,66 @@
+{
+  "name": "gulp-hook-standards-scaffold",
+  "version": "0.2.0",
+  "license": "UNLICENSED",
+  "private": true,
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/hookerz/gulp-hook-standards-scaffold.git"
+  },
+  "dependencies": {
+    "gulp-cli": "git://github.com/gulpjs/gulp-cli"
+  },
+  "scripts": {
+    "gulp4": "npm uninstall gulp -g && npm install gulpjs/gulp-cli#4.0 -g"
+  },
+  "devDependencies": {
+    "browser-sync": "^2.6.4",
+    "browserify": "^5.10.0",
+    "browserify-shim": "^3.7.0",
+    "chai": "^1.9.1",
+    "del": "^1.1.1",
+    "exorcist": "^0.1.6",
+    "gulp": "git://github.com/gulpjs/gulp.git#4.0",
+    "gulp-cached": "^1.0.1",
+    "gulp-concat": "^2.4.0",
+    "gulp-concat-sourcemap": "^1.3.1",
+    "gulp-csso": "~0.2.9",
+    "gulp-imagemin": "~1.2.1",
+    "gulp-inject-string": "0.0.2",
+    "gulp-jscs": "^1.6.0",
+    "gulp-jshint": "^1.8.4",
+    "gulp-mocha": "^1.0.0",
+    "gulp-rename": "^1.2.2",
+    "gulp-replace": "^0.5.3",
+    "gulp-sourcemaps": "^1.5.2",
+    "gulp-streamify": "0.0.5",
+    "gulp-stylus": "^1.3.0",
+    "gulp-uglify": "^1.0.0",
+    "gulp-util": "^3.0.1",
+    "imagemin-gifsicle": "^4.2.0",
+    "imagemin-jpegtran": "^4.3.0",
+    "imagemin-pngquant": "^4.1.2",
+    "jshint-stylish": "^0.4.0",
+    "karma": "^0.12.23",
+    "merge-stream": "^0.1.8",
+    "mocha": "^1.21.4",
+    "nib": "^1.0.3",
+    "opn": "~1.0.0",
+    "vinyl-buffer": "^1.0.0",
+    "vinyl-paths": "^1.0.0",
+    "vinyl-source-stream": "^0.1.1",
+    "watchify": "^1.0.2",
+    "yargs": "^1.3.1"
+  },
+  "engines": {
+    "node": ">=0.10.0"
+  },
+  "browserify-shim": {
+    "math": "global:Math"
+  },
+  "browserify": {
+    "transform": [
+      "browserify-shim"
+    ]
+  }
+}

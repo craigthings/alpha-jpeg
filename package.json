@@ -10,9 +10,6 @@
   "dependencies": {
     "gulp-cli": "git://github.com/gulpjs/gulp-cli"
   },
-  "scripts": {
-    "gulp4": "npm uninstall gulp -g && npm install gulpjs/gulp-cli#4.0 -g"
-  },
   "devDependencies": {
     "browser-sync": "^2.6.4",
     "browserify": "^5.10.0",

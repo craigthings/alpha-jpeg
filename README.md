@@ -36,7 +36,7 @@ Alpha JPEG methods accept an optional options object. The options are:
 **onComplete** _Function_
  > Sets a callback function for when the image is fully loaded and rendered. This passes a reference to the Alpha JPEG DOM element as an argument.
 
- # Creating Alpha JPEGs
+# Creating Alpha JPEGs
 
 1. Install the Alpha JPEG Photoshop Actions by double-clicking on the photoshop action located here:
 
@@ -53,6 +53,7 @@ Alpha JPEG methods accept an optional options object. The options are:
 6. Click the "play" button at the bottom of the Actions panel.
 
 7. You'll see the visible pixels on the left, and the alpha channel pixels on the right. Make any adjustments you need and save your asset out as a JPEG.
+
 
 # Building
 

@@ -7,7 +7,7 @@ Alpha JPEG is currently made up of two parts.
 
 # Usage
 
-The Alpha JPEG loader requires JPEGs that are exported using the Alpha JPEG Photoshop Action. Read the [Creating Alpha JPEGs](#Creating Alpha JPEGs) section for instructions.
+The Alpha JPEG loader requires JPEGs that are exported using the Alpha JPEG Photoshop Action. Read the [Creating Alpha JPEGs](#creating-alpha-jpegs) section for instructions.
 
 Once you've got an image exported, load it like this:
 

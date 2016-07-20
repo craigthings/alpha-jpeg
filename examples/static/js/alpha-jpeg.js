@@ -9,6 +9,9 @@ function AlphaJPEG(){
   self.load = function(target, src, options) {
     
     var onComplete = function(){};
+    if(typeof target == 'string') {
+        target = document.querySelector(target);
+    }
     var pixelRatio = 1;
     var renderer = "svg";
     if(!options){

@@ -1,6 +1,6 @@
 {
   "name": "alpha-jpeg",
-  "version": "0.1.1",
+  "version": "0.1.4",
   "license": "UNLICENSED",
   "description": "Create JPEGs with transparency.",
   "main": "src/utils/AlphaJPEG.js",
@@ -10,9 +10,6 @@
     "url": "https://github.com/craigathook/alpha-jpeg.git"
   },
   "author": "Craig Albert <me@craigalbert.com> (http://www.craigalbert.com)",
-  "dependencies": {
-    "gulp-cli": "git://github.com/gulpjs/gulp-cli"
-  },
   "keywords": [
     "jpeg",
     "compression",
@@ -21,6 +18,9 @@
     "transparency",
     "transparent"
   ],
+  "dependencies": {
+    "gulp-cli": "git://github.com/gulpjs/gulp-cli"  
+  },
   "devDependencies": {
     "browser-sync": "^2.6.4",
     "browserify": "^5.10.0",

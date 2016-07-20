@@ -7,7 +7,15 @@ Alpha JPEG is currently made up of two parts.
 
 # Setup
 
-There are 2 ways to use Alpha JPEG:
+There are 3 ways to use Alpha JPEG:
+
+**NPM**
+
+	npm install alpha-jpeg
+
+And just require it:
+
+	var AlphaJPEG = require('alpha-jpeg');
 
 **Script Tag**
 

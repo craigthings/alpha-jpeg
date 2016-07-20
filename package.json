@@ -1,11 +1,11 @@
 {
-  "name": "gulp-hook-standards-scaffold",
-  "version": "0.2.0",
+  "name": "alpha-jpeg",
+  "version": "0.1.1",
   "license": "UNLICENSED",
   "private": true,
   "repository": {
     "type": "git",
-    "url": "https://github.com/hookerz/gulp-hook-standards-scaffold.git"
+    "url": "https://github.com/craigathook/alpha-jpeg.git"
   },
   "dependencies": {
     "gulp-cli": "git://github.com/gulpjs/gulp-cli"

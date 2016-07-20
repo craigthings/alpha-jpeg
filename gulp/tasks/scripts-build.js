@@ -49,6 +49,7 @@ module.exports = function( gulp, bs, options, flags ) {
         .pipe(flags.minify ? streamify(uglify()) : gutil.noop())
         .pipe(flags.sourcemap ? sourcemaps.write('./') : gutil.noop())
         .pipe(gulp.dest(options.dist))
+        .pipe(gulp.dest('./examples/static/js'))
         .pipe(bs.stream());
     };
 

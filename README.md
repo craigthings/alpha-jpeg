@@ -2,8 +2,32 @@
 
 Alpha JPEG is currently made up of two parts. 
 
-1. Photoshop Action that converts a PNG into an "Alpha JPEG". This is a JPEG that contains both the visible pixels and transparent pixels. 
-2. A javascript library for loading the Alpha JPEG image. The javascript contains a loader that loads the Alpha JPEG and converts it into a transparent image in the DOM.
+1. A **Photoshop Action** that converts a PNG into an "Alpha JPEG". This is a JPEG that contains both the visible pixels and transparent pixels. 
+2. A **JavaScript library** for loading the Alpha JPEG image. The javascript contains a loader that loads the Alpha JPEG and converts it into a transparent image in the DOM.
+
+# Setup
+
+There are 2 ways to use Alpha JPEG:
+
+**Script Tag**
+
+Load it directly with a script tag. Download the compiled and minified library from:
+
+	/build/alpha-jpeg.min.js
+
+Upload it anywhere you like and include it with a script tag:
+
+	<script src="alpha-jpeg.min.js"></script>
+
+**Common JS Module**
+
+Download the commonjs module located from:
+
+	/src/utils/AlphaJPEG.js
+
+Save it anywhere you like in your development environment, and include it like normal:
+
+	var AlphaJPEG = require('./utils/AlphaJPEG');
 
 # Usage
 
@@ -71,3 +95,18 @@ This compiles a minified version of the library (alpha-jpeg.min.js), and a fulls
 To test the commonjs usage example, you can run:
 
 	gulp example
+
+
+# Examples
+
+### JavaScript library (must be run on an HTTP server)
+
+This example uses the compiled JavaScript library version of Alpha JPEG. You can find it here:
+
+	/examples/static/
+
+### CommonJS Module
+
+This example uses the CommonJS module version of Alpha JPEG. You can find it here:
+
+	/examples/commonjs/

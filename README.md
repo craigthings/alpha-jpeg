@@ -1,9 +1,14 @@
 # Alpha JPEG - Images with transparency using JPEG compression.
 
-Alpha JPEG is currently made up of two parts. 
+Create your own Alpha JPEGs here: [https://craigathook.github.io/alpha-jpeg/](https://craigathook.github.io/alpha-jpeg/)
 
-1. A **Photoshop Action** that converts a PNG into an "Alpha JPEG". This is a JPEG that contains both the visible pixels and transparent pixels. 
+Alpha JPEGs contain both the visible pixels and transparent pixels. Alpha JPEGs, when loaded using the Alpha JPEG loader, appear like PNGs but take advantage of JPEG compression.
+
+Alpha JPEG is made up of 3 parts. 
+
+1. The [Alpha JPEG Generator](https://craigathook.github.io/alpha-jpeg/). Use it to create Alpha JPEGs. Drop a PNG, adjust the quality and download your Alpha JPEG.
 2. A **JavaScript library** for loading the Alpha JPEG image. The javascript contains a loader that loads the Alpha JPEG and converts it into a transparent image in the DOM.
+2. A **Photoshop Action** that converts a PNG into an "Alpha JPEG" in Adobe Photoshop. This is useful for making mangual adjustments.
 
 # Setup
 
@@ -72,6 +77,19 @@ Alpha JPEG methods accept an optional options object. The options are:
  > Sets a callback function for when the image is fully loaded and rendered. This passes a reference to the Alpha JPEG DOM element as an argument.
 
 # Creating Alpha JPEGs
+
+### Alpha JPEG Generator
+
+1. Head to [https://craigathook.github.io/alpha-jpeg/](https://craigathook.github.io/alpha-jpeg/)
+
+2. Find a PNG on your computer, drag and drop it in the dashed "Source" box.
+
+3. Choose a quality setting and hit "Generate". A preview of the compressed Alpha JPEG will appear below in the "Result" box. Feel free to adjust the quality setting and hit "Generate" until you like the results.
+
+4. Click "Download" below the "Result" image to download the Alpha JPEG.
+
+
+### Photoshop Action
 
 1. Install the Alpha JPEG Photoshop Actions by double-clicking on the photoshop action located here:
 

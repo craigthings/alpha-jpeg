@@ -12,16 +12,27 @@
   <body>
     <div id="container">
       <h1 id="title">Alpha JPEG</h1>
+
+      <div id="menu">
+        <span><a href="https://www.npmjs.com/package/alpha-jpeg">npm</a></span>
+        <span><a href="https://github.com/craigathook/alpha-jpeg">github</a></span>
+        <span><a href="https://raw.githubusercontent.com/craigathook/alpha-jpeg/master/build/alpha-jpeg.min.js">download</a></span>
+        <span><a href="https://github.com/craigathook/alpha-jpeg/blob/master/README.md#alpha-jpeg---images-with-transparency-using-jpeg-compression">docs</a></span>
+      </div>
+      <p class="headline">Usage</p>
+      <div id="usage">
+        AlphaJPEG.load('#container', 'myImage.alpha.jpg');
+      </div>
       
-      <p id="sourceTitle">Source</p>
+      <p id="sourceTitle" class="headline">Source</p>
       <div id="source">
         <div id="dropArea" class="emptyBox">Drag n' Drop PNG here</div>
       </div>
       
-      <p>Quality</p>
+      <p class="headline">Quality</p>
       <input id="qualitySetting" type="range" name="points" min="0" max="100" value="80">
       <br><input name="generate" id="btnGenerate" type="submit" value="Generate">
-      <p id="previewTitle">Preview</p>
+      <p id="previewTitle" class="headline">Preview</p>
       
       <div id="preview">
         <div id="blankArea" class="emptyBox">Nothing yet</div>

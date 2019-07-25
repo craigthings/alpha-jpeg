@@ -6,7 +6,7 @@ Alpha JPEGs contain both the visible pixels and transparent pixels. Alpha JPEGs,
 
 Alpha JPEG is made up of 3 parts. 
 
-1. The [Alpha JPEG Generator](https://craigathook.github.io/alpha-jpeg/). Use it to create Alpha JPEGs. Drop a PNG, adjust the quality and download your Alpha JPEG.
+1. The [Alpha JPEG Generator](https://craigthings.github.io/alpha-jpeg/). Use it to create Alpha JPEGs. Drop a PNG, adjust the quality and download your Alpha JPEG.
 2. A **JavaScript library** for loading the Alpha JPEG image. The javascript contains a loader that loads the Alpha JPEG and converts it into a transparent image in the DOM.
 2. A **Photoshop Action** that converts a PNG into an "Alpha JPEG" in Adobe Photoshop. This is useful for making mangual adjustments.
 

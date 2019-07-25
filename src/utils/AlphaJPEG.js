@@ -59,7 +59,7 @@ function AlphaJPEG(){
         var date = new Date();
         var msTime = date.getTime();
 
-        var safeAssetName = imgSrc.split('/')[imgSrc.split('/').length-1].replace(/[|&\-;$%@_."<>=()+,]/g, "");
+        var safeAssetName = imgSrc.split('/')[imgSrc.split('/').length-1].replace(/[|&\-;$%@_."<>=()+,]/g, "") + Math.round(Math.random()*10000);
 
         var maskName = 'imageMask'+safeAssetName;
         var imageName = 'imageSource'+safeAssetName;

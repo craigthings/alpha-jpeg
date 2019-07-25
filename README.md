@@ -1,6 +1,6 @@
 # Alpha JPEG - Images with transparency using JPEG compression.
 
-Create your own Alpha JPEGs here: [https://craigathook.github.io/alpha-jpeg/](https://craigathook.github.io/alpha-jpeg/)
+Create your own Alpha JPEGs here: [https://craigthings.github.io/alpha-jpeg/](https://craigthings.github.io/alpha-jpeg/)
 
 Alpha JPEGs contain both the visible pixels and transparent pixels. Alpha JPEGs, when loaded using the Alpha JPEG loader, appear like PNGs but take advantage of JPEG compression.
 
@@ -80,7 +80,7 @@ Alpha JPEG methods accept an optional options object. The options are:
 
 ### Alpha JPEG Generator
 
-1. Head to [https://craigathook.github.io/alpha-jpeg/](https://craigathook.github.io/alpha-jpeg/)
+1. Head to [https://craigthings.github.io/alpha-jpeg/](https://craigthings.github.io/alpha-jpeg/)
 
 2. Find a PNG on your computer, drag and drop it in the dashed "Source" box.
 

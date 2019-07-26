@@ -22,7 +22,7 @@ function AlphaJPEG(){
     if( options.hasOwnProperty('renderer') ) {
       renderer = options.renderer;
     }
-    //console.log('AlphaJPEG init');
+    // console.log('AlphaJPEG init');
     var canvas = document.createElement('canvas');
     var htmlImage = document.createElement('img');
     var imgContainer = document.createElement('div');
@@ -66,20 +66,17 @@ function AlphaJPEG(){
 
         var svgElement = '<svg id="'+safeAssetName+'" preserveAspectRatio="none" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 ' + svgW + ' ' + svgH + '" class="svg-elem"><defs><mask id="'+maskName+'"><image id="'+imageName+'" width="' + imgW + '" height="' + imgH + '" xlink:href="' + imgSrc + '" x="-' + svgW + '"></image></mask></defs><image mask="url(#'+maskName+')" id="sourceImage" width="' + imgW + '" height="' + imgH + '" xlink:href="' + imgSrc + '"></image></svg>';
 
-        imgContainer.innerHTML = svgElement;
+        var svgContainer = document.createElement('div');
+        svgContainer.innerHTML = svgElement;
 
-        var svgDom = imgContainer.children[0];
-        if (navigator.userAgent.indexOf('Safari') != -1 && navigator.userAgent.indexOf('Chrome') == -1) {
-          svgDom.onload = function(){
-            //console.log('AlphaJPEG Load Complete \(Safari\).');
-            onComplete(svgDom);
-          };
-        } else {
-          //console.log('AlphaJPEG Load Complete.');
-          onComplete(svgDom);
-        }
+        var svgDom = svgContainer.children[0];
+        
+        imgContainer.appendChild(svgContainer);
+
         container.appendChild(imgContainer);
         target.appendChild(container);
+
+        window.requestAnimationFrame(function(){ onComplete(svgDom) });
       }
     }
     

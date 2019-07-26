@@ -67,6 +67,8 @@ function AlphaJPEG(){
         var svgElement = '<svg id="'+safeAssetName+'" preserveAspectRatio="none" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 ' + svgW + ' ' + svgH + '" class="svg-elem"><defs><mask id="'+maskName+'"><image id="'+imageName+'" width="' + imgW + '" height="' + imgH + '" xlink:href="' + imgSrc + '" x="-' + svgW + '"></image></mask></defs><image mask="url(#'+maskName+')" id="sourceImage" width="' + imgW + '" height="' + imgH + '" xlink:href="' + imgSrc + '"></image></svg>';
 
         var svgContainer = document.createElement('div');
+        svgContainer.style.width = (w/2) + 'px';
+        svgContainer.style.height = h + 'px';
         svgContainer.innerHTML = svgElement;
 
         var svgDom = svgContainer.children[0];

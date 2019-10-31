@@ -1,6 +1,6 @@
 {
   "name": "alpha-jpeg",
-  "version": "0.1.10",
+  "version": "0.1.11",
   "license": "UNLICENSED",
   "description": "Create JPEGs with transparency.",
   "main": "src/utils/AlphaJPEG.js",

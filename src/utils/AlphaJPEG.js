@@ -94,10 +94,12 @@ function AlphaJPEG(){
 
         canvas.style.width = w/pixelRatio+"px";
         canvas.style.height = h/pixelRatio+"px";
+        canvas.style.position = 'absolute';
 
         imgContainer.style.width = w/2/pixelRatio + 'px';
         imgContainer.style.height = h/pixelRatio + 'px';
         imgContainer.style.overflow = 'hidden';
+        imgContainer.style.position = 'relative';
 
         var ctx = canvas.getContext("2d");
 
@@ -113,6 +115,7 @@ function AlphaJPEG(){
           imagePixels[i + 3] = alpha;
         }
 
+        ctx.clearRect(w/2, 0, w, h);
         ctx.putImageData(imageData, 0, 0);
         imgContainer.appendChild(canvas);
         target.appendChild(imgContainer);

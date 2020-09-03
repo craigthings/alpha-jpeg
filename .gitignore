@@ -1,10 +1,6 @@
-.idea
-.tmp
-.sass-cache
-.vagrant
-dist
-node_modules
-bower_components
+node_modules/
+npm-debug.log
 
-*.pyc
+dist/
 
+yarn.lock

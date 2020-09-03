@@ -92,28 +92,28 @@ function AlphaJPEG(){
         canvas.width = w;
         canvas.height = h;
 
-        canvas.style.width = w/pixelRatio+"px";
-        canvas.style.height = h/pixelRatio+"px";
-        canvas.style.position = 'absolute';
-
-        imgContainer.style.width = w/2/pixelRatio + 'px';
-        imgContainer.style.height = h/pixelRatio + 'px';
-        imgContainer.style.overflow = 'hidden';
-        imgContainer.style.position = 'relative';
+        canvas.style.width = w + "px";
+        canvas.style.height = h / 2 + "px";
+        canvas.style.position = "absolute";
 
         var ctx = canvas.getContext("2d");
 
         ctx.drawImage(htmlImage, 0, 0);
 
-        var imageData = ctx.getImageData(0, 0, w/2, h);
+        var imageData = ctx.getImageData(0, 0, w, h / 2);
         var imagePixels = imageData.data;
-        var maskData = ctx.getImageData(w/2, 0, w/2, h);
+        var maskData = ctx.getImageData(0, h / 2, w, h);
         var maskPixels = maskData.data;
 
         for (var i = 0, n = imagePixels.length; i < n; i += 4) {
           var alpha = maskPixels[i];
           imagePixels[i + 3] = alpha;
         }
+
+        ctx.clearRect(0, 0, w, h);
+
+        canvas.width = w;
+        canvas.height = h / 2;
 
         ctx.clearRect(w/2, 0, w, h);
         ctx.putImageData(imageData, 0, 0);

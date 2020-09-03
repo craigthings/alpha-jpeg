@@ -4,6 +4,7 @@ const path = require("path");
 const root = path.join(__dirname, "..");
 const merge = require("webpack-merge");
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 module.exports = (env) => {
   let config = {
@@ -23,6 +24,13 @@ module.exports = (env) => {
           },
         },
         {
+          test: /\.(png|jpe?g|gif)$/i,
+          loader: 'file-loader',
+          options: {
+            outputPath: 'images',
+          },
+        },
+        {
           test: /\.(woff(2)?|ttf|eot|svg)(\?v=\d+\.\d+\.\d+)?$/,
           use: [
             {
@@ -38,7 +46,12 @@ module.exports = (env) => {
     },
 
     plugins: [
-      new CleanWebpackPlugin()
+      new CleanWebpackPlugin(),
+      new CopyWebpackPlugin({
+        patterns: [
+            { from: 'static' }
+        ]
+    })
     ],
 
     devServer: {

@@ -108,19 +108,12 @@ Alpha JPEG methods accept an optional options object. The options are:
 7. You'll see the visible pixels on the left, and the alpha channel pixels on the right. Make any adjustments you need and save your asset out as a JPEG.
 
 
-# Building
+# How to develop and build
 
-To build a stand alone javascript file you can load directly, run:
-
-	gulp
-
-This compiles a minified version of the library (alpha-jpeg.min.js), and a fullsized version of the library with a sourcemap (alpha-jpeg.js, alpha-jpeg.js.map) located in:
-
-	/build/
-
-To test the commonjs usage example, you can run:
-
-	gulp example
+```bash
+npm run build:prod    # Build library for portable use.
+npm run dev    # Run the demo as a live dev server.
+```
 
 
 # Examples

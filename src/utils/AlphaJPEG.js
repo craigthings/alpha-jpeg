@@ -37,21 +37,21 @@ function AlphaJPEG(){
         var w = htmlImage.width;
         var h = htmlImage.height;
 
-        container.style.width = w/2/pixelRatio + 'px';
-        container.style.height = h/pixelRatio + 'px';
+        container.style.width = w/pixelRatio + 'px';
+        container.style.height = h/2/pixelRatio + 'px';
 
         imgContainer.style.position = 'relative';
         imgContainer.style.transform = 'scale('+ (1/pixelRatio) +')';
         imgContainer.style.transformOrigin = 'top left';
         imgContainer.style.webkitTransform = 'scale('+ (1/pixelRatio) +')';
         imgContainer.style.webkitTransformOrigin = 'top left';
-        imgContainer.style.width = (w/2) + 'px';
-        imgContainer.style.height = h + 'px';
+        imgContainer.style.width = w + 'px';
+        imgContainer.style.height = (h/2) + 'px';
         imgContainer.style.overflow = 'hidden';
         imgContainer.style.opacity = '0.999999'; // this really shouldn't be necessary, but it is.
 
-        var svgW = w/2;
-        var svgH = h;
+        var svgW = w;
+        var svgH = h/2;
         var imgW = w;
         var imgH = h;
         var imgSrc = src;
@@ -67,8 +67,8 @@ function AlphaJPEG(){
         var svgElement = '<svg id="'+safeAssetName+'" preserveAspectRatio="none" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 ' + svgW + ' ' + svgH + '" class="svg-elem"><defs><mask id="'+maskName+'"><image id="'+imageName+'" width="' + imgW + '" height="' + imgH + '" xlink:href="' + imgSrc + '" x="-' + svgW + '"></image></mask></defs><image mask="url(#'+maskName+')" id="sourceImage" width="' + imgW + '" height="' + imgH + '" xlink:href="' + imgSrc + '"></image></svg>';
 
         var svgContainer = document.createElement('div');
-        svgContainer.style.width = (w/2) + 'px';
-        svgContainer.style.height = h + 'px';
+        svgContainer.style.width = w + 'px';
+        svgContainer.style.height = (h/2) + 'px';
         svgContainer.innerHTML = svgElement;
 
         var svgDom = svgContainer.children[0];
@@ -97,7 +97,7 @@ function AlphaJPEG(){
         canvas.style.position = "absolute";
 
         var ctx = canvas.getContext("2d");
-
+        
         ctx.drawImage(htmlImage, 0, 0);
 
         var imageData = ctx.getImageData(0, 0, w, h / 2);

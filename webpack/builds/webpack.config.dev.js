@@ -1,6 +1,7 @@
 "use strict";
 const path = require("path");
 const root = path.join(__dirname, "../../");
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 module.exports = {
   mode: "development",
@@ -14,4 +15,11 @@ module.exports = {
     filename: "[name].min.js",
     path: path.join(root, "dist"),
   },
+  plugins: [
+    new CopyWebpackPlugin({
+      patterns: [
+          { from: 'static' }
+      ]
+    })
+  ],
 };

@@ -46,12 +46,7 @@ module.exports = (env) => {
     },
 
     plugins: [
-      new CleanWebpackPlugin(),
-      new CopyWebpackPlugin({
-        patterns: [
-            { from: 'static' }
-        ]
-    })
+      new CleanWebpackPlugin()
     ],
 
     devServer: {

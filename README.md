@@ -67,9 +67,6 @@ This repository also includes a commonjs module version of the code located here
 
 Alpha JPEG methods accept an optional options object. The options are:
 
-**renderer** (default: "svg") _String_
- > Set this option to "svg" to have the loader render the image into an SVG DOM element. Set it to "canvas" to render the image into a canvas DOM element.
-
  **pixelRatio** (default: 1) _Number_
  > This option increases the pixel density of the image. If your asset is, for example, targeting an iPhone 5 and your Alpha JPEG is exported at retina resolution, you'll probably want to set this to "2".
 
@@ -89,7 +86,7 @@ Alpha JPEG methods accept an optional options object. The options are:
 4. Click "Download" below the "Result" image to download the Alpha JPEG.
 
 
-<!-- ### Photoshop Action
+### Photoshop Action
 
 1. Install the Alpha JPEG Photoshop Actions by double-clicking on the photoshop action located here:
 
@@ -105,7 +102,7 @@ Alpha JPEG methods accept an optional options object. The options are:
 
 6. Click the "play" button at the bottom of the Actions panel.
 
-7. You'll see the visible pixels on the left, and the alpha channel pixels on the right. Make any adjustments you need and save your asset out as a JPEG. -->
+7. You'll see the visible pixels on the top, and the alpha channel pixels on the bottom. Make any adjustments you need and save your asset out as a JPEG.
 
 
 # How to develop and build
@@ -115,17 +112,10 @@ npm run build:prod    # Build library for portable use.
 npm run dev    # Run the demo as a live dev server.
 ```
 
-
 # Examples
 
 ### JavaScript library (must be run on an HTTP server)
 
 This example uses the compiled JavaScript library version of Alpha JPEG. You can find it here:
 
-	/examples/static/
-
-### CommonJS Module
-
-This example uses the CommonJS module version of Alpha JPEG. You can find it here:
-
-	/examples/commonjs/
+	/demo/demo.js

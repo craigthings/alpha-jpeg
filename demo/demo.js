@@ -7,9 +7,7 @@ function main() {
 	var imageURL = 'images/example-orig-small.jpg';
 	var container = document.getElementById('container');
 
-	console.log('??????')
-
-	AlphaJPEG.load(container, imageURL, { renderer: 'svg', onComplete: function(elem){
+	AlphaJPEG.load(container, imageURL, { pixelRatio: 1, onComplete: function(elem){
 	  console.log('AlphaJPEG loaded');
 	  elem.onclick = imageClicked;
 	}});

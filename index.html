@@ -7,7 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href='https://fonts.googleapis.com/css?family=Reenie+Beanie' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700,300' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" href="css/index.css">
+    <script type="module" crossorigin src="/alpha-jpeg/assets/index-BONLReU1.js"></script>
+    <link rel="stylesheet" crossorigin href="/alpha-jpeg/assets/index-vwTmLRsd.css">
   </head>
   <body>
     <div id="container">
@@ -31,6 +32,15 @@
       
       <p class="headline">Quality</p>
       <input id="qualitySetting" type="range" name="points" min="0" max="100" value="80">
+      
+      <p class="headline">Options</p>
+      <div class="options">
+        <label>
+          <input type="checkbox" id="backgroundToggle" checked>
+          Use White Background (for transparent pixels)
+        </label>
+      </div>
+      
       <br><input name="generate" id="btnGenerate" type="submit" value="Generate">
       <p id="previewTitle" class="headline">Preview</p>
       
@@ -39,7 +49,5 @@
       </div>
       <div id="btnDownload" class="button">Download</div>
     </div>
-    <script src="js/vendor.js"></script>
-    <script src="js/main.build.js"></script>
   </body>
 </html>

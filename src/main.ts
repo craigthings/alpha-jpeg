@@ -8,6 +8,7 @@ const source = document.getElementById('source') as HTMLElement;
 const preview = document.getElementById('preview') as HTMLElement;
 const btnGenerate = document.getElementById('btnGenerate') as HTMLButtonElement;
 const previewTitle = document.getElementById('previewTitle') as HTMLElement;
+const backgroundToggle = document.getElementById('backgroundToggle') as HTMLInputElement;
 
 // Define the generate handler as a named async function
 async function handleGenerate(e: MouseEvent): Promise<void> {
@@ -149,7 +150,6 @@ async function processWithAlpha(sourceImg: HTMLImageElement): Promise<HTMLImageE
     canvas.style.width = (2 * width) + 'px';
     canvas.style.height = height + 'px';
 
-    // Add willReadFrequently option
     const ctx = canvas.getContext('2d', { willReadFrequently: true });
     if (!ctx) {
         throw new Error('Failed to get 2D context from canvas');
@@ -158,22 +158,33 @@ async function processWithAlpha(sourceImg: HTMLImageElement): Promise<HTMLImageE
     ctx.drawImage(sourceImg, 0, 0);
     ctx.fillRect(width, 0, width, height);
 
-    // Process image data - note the changes in alpha handling
     const imageData = ctx.getImageData(0, 0, width, height);
     const pixels = imageData.data;
     const alphaData = ctx.getImageData(width, 0, width, height);
     const alphaPixels = alphaData.data;
 
-    // Extract alpha channel - matches build file exactly
+    // Get background color based on toggle
+    const useWhiteBackground = backgroundToggle.checked;
+    const bgColor = useWhiteBackground ? 255 : 0;
+
+    // Extract alpha channel and set fully transparent pixels to selected background
     for (let i = 0, len = pixels.length; i < len; i += 4) {
         const alpha = Number(pixels[i + 3]);
-        alphaPixels[i + 0] = 0;  // Set RGB to 0 first
-        alphaPixels[i + 1] = 0;
-        alphaPixels[i + 2] = 0;
-        alphaPixels[i + 0] = alpha;  // Then set RGB to alpha value
+        
+        // If pixel is fully transparent, set RGB to selected background color
+        if (alpha === 0) {
+            pixels[i + 0] = bgColor;  // R
+            pixels[i + 1] = bgColor;  // G
+            pixels[i + 2] = bgColor;  // B
+        }
+        
+        // Set up alpha channel in second half
+        alphaPixels[i + 0] = alpha;
         alphaPixels[i + 1] = alpha;
         alphaPixels[i + 2] = alpha;
         alphaPixels[i + 3] = 255;
+        
+        // Force full opacity in the color image
         pixels[i + 3] = 255;
     }
 

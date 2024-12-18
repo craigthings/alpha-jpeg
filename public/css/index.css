@@ -1,4 +1,3 @@
-
 body {
     background: url("../images/checkerboard.png");
     text-align: center;
@@ -430,4 +429,14 @@ input[type=range]:focus::-ms-fill-lower {
 
 input[type=range]:focus::-ms-fill-upper {
     background: #367ebd
+}
+
+.options {
+    text-align: center;
+    margin: 10px 0;
+}
+
+.options label {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 14px;
 }

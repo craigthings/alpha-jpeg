@@ -12,8 +12,8 @@
   "devDependencies": {
     "@types/node": "^20.11.0",
     "gh-pages": "^6.1.1",
-    "typescript": "^5.2.2",
-    "vite": "^5.0.8"
+    "typescript": "~5.6.2",
+    "vite": "^6.0.1"
   },
   "dependencies": {
     "alpha-jpeg": "^0.2.0",

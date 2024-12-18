@@ -174,28 +174,36 @@ async function createImageFromCanvas(canvas: HTMLCanvasElement): Promise<HTMLIma
 
 // Download the processed image
 function downloadImage(img: HTMLImageElement, filename: string): void {
-    // Convert base64 to blob
-    const binary = atob(img.src.split(',')[1]);
-    const array = new Uint8Array(binary.length);
-    for (let i = 0; i < binary.length; i++) {
-        array[i] = binary.charCodeAt(i) & 0xFF;
-    }
+    // Remove any data URL prefix if present
+    const base64Data = img.src.replace(/^data:image\/\w+;base64,/, '');
     
-    // Create blob and blob URL
-    const blob = new Blob([array], {type: 'image/jpeg'});
-    const blobUrl = URL.createObjectURL(blob);
+    try {
+        // Convert base64 to blob
+        const binary = atob(base64Data);
+        const array = new Uint8Array(binary.length);
+        for (let i = 0; i < binary.length; i++) {
+            array[i] = binary.charCodeAt(i) & 0xFF;
+        }
+        
+        // Create blob and blob URL
+        const blob = new Blob([array], {type: 'image/jpeg'});
+        const blobUrl = URL.createObjectURL(blob);
 
-    // Handle download
-    const link = document.createElement('a');
-    link.style.display = 'none';
-    document.body.appendChild(link);
-    link.href = blobUrl;
-    link.download = filename;
-    link.click();
-    
-    // Clean up
-    document.body.removeChild(link);
-    URL.revokeObjectURL(blobUrl);
+        // Handle download
+        const link = document.createElement('a');
+        link.style.display = 'none';
+        document.body.appendChild(link);
+        link.href = blobUrl;
+        link.download = filename;
+        link.click();
+        
+        // Clean up
+        document.body.removeChild(link);
+        URL.revokeObjectURL(blobUrl);
+    } catch (error) {
+        console.error('Error decoding base64 string:', error);
+        // Handle the error appropriately (e.g., show user message)
+    }
 }
 
 // Update drag and drop to use async/await

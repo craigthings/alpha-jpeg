@@ -14,33 +14,55 @@ async function handleGenerate(e: MouseEvent): Promise<void> {
     e.stopPropagation();
     e.preventDefault();
 
+    // Get the source image and validate
     const sourceImg = source.querySelector('img');
-    if (!sourceImg) return;
-
-    // Clear preview
-    while (preview.firstChild) {
-        preview.removeChild(preview.firstChild);
+    if (!sourceImg) {
+        console.warn('No source image found');
+        return;
     }
 
-    // Process image with current quality setting
-    const processedImg = await processWithQuality(sourceImg);
-    preview.style.width = sourceImg.width + 'px';
-    preview.style.height = sourceImg.height + 'px';
-    preview.style.margin = '0 auto';
-    processedImg.style.display = 'none';
+    // Disable the generate button while processing
+    btnGenerate.disabled = true;
+    try {
+        // Clear preview
+        while (preview.firstChild) {
+            preview.removeChild(preview.firstChild);
+        }
 
-    // Load and setup alpha JPEG
-    await setupAlphaJPEG(processedImg, sourceImg);
+        // Process image with current quality setting
+        const processedImg = await processWithQuality(sourceImg);
+        
+        // Get the actual blob size
+        const response = await fetch(processedImg.src);
+        const blob = await response.blob();
+        const sizeInBytes = blob.size;
+        
+        // Set preview dimensions
+        preview.style.width = sourceImg.width + 'px';
+        preview.style.height = sourceImg.height + 'px';
+        preview.style.margin = '0 auto';
+        processedImg.style.display = 'none';
 
-    // Update preview size
-    const base64Header = 'data:image/jpeg;base64,';
-    const sizeInBytes = Math.round(3 * (processedImg.src.length - base64Header.length) / 4);
-    previewTitle.innerHTML = `Preview (${Math.round((sizeInBytes / 1024) * 100) / 100}k)`;
+        // Load and setup alpha JPEG
+        await setupAlphaJPEG(processedImg, sourceImg);
+
+        // Update preview size
+        previewTitle.innerHTML = `Preview (${(sizeInBytes / 1024).toFixed(2)}k)`;
+    } catch (error) {
+        console.error('Error generating image:', error);
+    } finally {
+        // Re-enable the generate button
+        btnGenerate.disabled = false;
+    }
 }
 
 async function setupAlphaJPEG(processedImg: HTMLImageElement, sourceImg: HTMLImageElement): Promise<void> {
+    // Create a container div that won't be replaced
+    const container = document.createElement('div');
+    preview.appendChild(container);
+    
     await new Promise<void>(resolve => {
-        AlphaJPEG.load(preview, processedImg.src, {
+        AlphaJPEG.load(container, processedImg.src, {
             onComplete: function () {
                 setupDownloadButton(processedImg, sourceImg);
                 resolve();
@@ -127,7 +149,8 @@ async function processWithAlpha(sourceImg: HTMLImageElement): Promise<HTMLImageE
     canvas.style.width = (2 * width) + 'px';
     canvas.style.height = height + 'px';
 
-    const ctx = canvas.getContext('2d');
+    // Add willReadFrequently option
+    const ctx = canvas.getContext('2d', { willReadFrequently: true });
     if (!ctx) {
         throw new Error('Failed to get 2D context from canvas');
     }
@@ -174,36 +197,18 @@ async function createImageFromCanvas(canvas: HTMLCanvasElement): Promise<HTMLIma
 
 // Download the processed image
 function downloadImage(img: HTMLImageElement, filename: string): void {
-    // Remove any data URL prefix if present
-    const base64Data = img.src.replace(/^data:image\/\w+;base64,/, '');
+    // Create a temporary link element
+    const link = document.createElement('a');
+    link.style.display = 'none';
+    document.body.appendChild(link);
     
-    try {
-        // Convert base64 to blob
-        const binary = atob(base64Data);
-        const array = new Uint8Array(binary.length);
-        for (let i = 0; i < binary.length; i++) {
-            array[i] = binary.charCodeAt(i) & 0xFF;
-        }
-        
-        // Create blob and blob URL
-        const blob = new Blob([array], {type: 'image/jpeg'});
-        const blobUrl = URL.createObjectURL(blob);
-
-        // Handle download
-        const link = document.createElement('a');
-        link.style.display = 'none';
-        document.body.appendChild(link);
-        link.href = blobUrl;
-        link.download = filename;
-        link.click();
-        
-        // Clean up
-        document.body.removeChild(link);
-        URL.revokeObjectURL(blobUrl);
-    } catch (error) {
-        console.error('Error decoding base64 string:', error);
-        // Handle the error appropriately (e.g., show user message)
-    }
+    // Set the blob URL as the href and trigger download
+    link.href = img.src;
+    link.download = filename;
+    link.click();
+    
+    // Clean up
+    document.body.removeChild(link);
 }
 
 // Update drag and drop to use async/await

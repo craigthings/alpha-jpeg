@@ -1,5 +1,5 @@
 // Dependencies
-import { createAlphaJpeg, renderAlphaJpeg, downloadAlphaJpeg, AlphaJpegOptions } from './alpha-jpeg';
+import { AlphaJpeg, AlphaJpegOptions } from './alpha-jpeg';
 
 // DOM Elements
 const sourceTitle = document.getElementById('sourceTitle') as HTMLElement;
@@ -42,7 +42,7 @@ async function handleGenerate(e: MouseEvent): Promise<void> {
             useWhiteBackground: useWhiteBackground
         };
         
-        const result = await createAlphaJpeg(sourceImg, options);
+        const result = await AlphaJpeg.create(sourceImg, options);
         
         // Set preview dimensions
         preview.style.width = sourceImg.width + 'px';
@@ -55,7 +55,7 @@ async function handleGenerate(e: MouseEvent): Promise<void> {
         preview.appendChild(container);
         
         // Load and setup alpha JPEG
-        await renderAlphaJpeg(container, result.imageElement.src);
+        await AlphaJpeg.render(container, result.imageElement.src);
         
         // Setup download button
         setupDownloadButton(result.imageElement, sourceImg);
@@ -76,7 +76,7 @@ function setupDownloadButton(processedImg: HTMLImageElement, sourceImg: HTMLImag
         setTimeout(() => btnGenerate.scrollIntoView(), 10);
         downloadBtn.onclick = () => {
             const filename = sourceImg.dataset.filename?.replace('.png', '.alpha.jpg') || 'image.alpha.jpg';
-            downloadAlphaJpeg(processedImg, filename);
+            AlphaJpeg.download(processedImg, filename);
         };
     }
 }
